@@ -1,0 +1,30 @@
+{% extends 'favorites/base.html' %}
+
+
+{% block content %}
+
+    <section class="masthead-c text-center d-flex">
+        <div class="container my-auto">
+            <div class="row">
+                <div class="col-lg-4 mx-auto text-center">
+                    {% if error %}
+                        <p class="text-left">{{ error }}</p>
+                    {% endif %}
+                    {% if message %}
+                        <div class="alert alert-success">{{ message }}</div>
+                        <h3>Bonjour {{ user.username }}</h3>
+                    {% else %}
+                        <h5>Mon identifiant</h5>
+                        <hr class="bg-1">
+                        <form class="input-group-mb" method="post" action="{% url 'registration' %}">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <input class="form-control bg-1 text-white in" type="submit" value="confirmer"/>
+                        </form>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
