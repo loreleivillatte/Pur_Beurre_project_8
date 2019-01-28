@@ -28,10 +28,12 @@ if os.environ.get('ENV') == 'PRODUCTION':
     DEBUG = False
 else:
     DEBUG = True
-
-ALLOWED_HOSTS = ['project-purbeurre.com']
-
-
+    
+if os.environ.get('ENV') == 'PRODUCTION':
+    ALLOWED_HOSTS = ['project-purbeurre.herokuapp.com']
+else:
+    ALLOWED_HOSTS = ['127.0.0.1']
+    
 # Application definition
 
 INSTALLED_APPS = [
@@ -130,6 +132,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+INTERNAL_IPS = ['127.0.0.1']
 
 if os.environ.get('ENV') == 'PRODUCTION':
 
