@@ -24,7 +24,6 @@ def search(request):
             'query': query,
             'products': products,
         }
-        print(query)
 
         if not products.exists():
             message = f"Aucun résultat pour la recherche {query}"
